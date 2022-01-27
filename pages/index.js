@@ -18,7 +18,6 @@ function Title(props){
         </>
     );
 }
-
 // function HomePage() {
 //     return (
 //         <div>
@@ -33,6 +32,8 @@ function Title(props){
 export default function PaginaInicial() {
     const [username, setUsername] = React.useState('mateuscbarbosa');
     const roteamento = useRouter();
+    //const [image, setImage] = React.useState(`https://github.com/${username}.png`);
+    const serverResponse = fetch(`https://api.github.com/users/${username}`).then(function(res){(res.status)});
     return (
       <>
         <Box
@@ -79,7 +80,7 @@ export default function PaginaInicial() {
   
               <TextField
                 value={username}
-                onChange={ function(event){
+                onChange={function(event){
                   console.log('usuario digitou', event.target.value)
                   // onde esta o valor?
                   const valor = event.target.value;
@@ -87,6 +88,7 @@ export default function PaginaInicial() {
                   setUsername(valor);
                 }}
 
+                placeholder='Informe seu usuário do GitHub'
                 fullWidth
                 textFieldColors={{
                   neutral: {
@@ -133,7 +135,7 @@ export default function PaginaInicial() {
                   borderRadius: '50%',
                   marginBottom: '16px',
                 }}
-                src={`https://github.com/${username}.png`}
+                src={serverResponse != 404 ? `https://github.com/${username}.png`:""}
               />
               <Text
                 variant="body4"
