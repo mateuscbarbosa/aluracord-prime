@@ -32,7 +32,7 @@ function Title(props){
 export default function PaginaInicial() {
     const [username, setUsername] = React.useState('mateuscbarbosa');
     const roteamento = useRouter();
-    //const serverResponse = fetch(`https://api.github.com/users/${username}`).then(function(res){(res.status)});
+    const serverResponse = fetch(`https://api.github.com/users/${username}`).then(function(res){(res.status)});
     //const imageUser404 = `https://avatars.githubusercontent.com/u/72516703?v=4`;
     
     return (
@@ -136,9 +136,9 @@ export default function PaginaInicial() {
                   borderRadius: '50%',
                   marginBottom: '16px',
                 }}
-                src={`https://github.com/${username}.png`}
-                //src={username > 2 ? `https://github.com/${username}.png`: ""}
-                //src={serverResponse != 404 ? `https://github.com/${username}.png`: image}
+                //src={`https://github.com/${username}.png`}
+                src={username.length > 2 ? `https://github.com/${username}.png`: `/images/usuario404.png`}
+                //src={serverResponse === 404 ? `https://github.com/${username}.png`: `/images/usuario404.png`}
                 
               />
               <Text
