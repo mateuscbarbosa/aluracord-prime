@@ -67,7 +67,7 @@ export default function PaginaInicial() {
                 //previne o padrão (Atualizar a página)
                 event.preventDefault();
                 //vai para a página descrita
-                roteamento.push('/chat');
+                roteamento.push(`/chat?username=${username}`);
               }}
               styleSheet={{
                 display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
